@@ -14,6 +14,11 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     [Header("Jump")]
     [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _jumpCulDown = 0.2f;
+
+    [Header("Dash")]
+    [SerializeField] private float _dashForce = 50f;
+    [SerializeField] private float _dashTme = 0.1f;
+    [SerializeField] private float _dashCulDown = 0.5f;
     
     [Header("Physics")]
     [SerializeField] private float _gravityForce = 9.81f;
@@ -36,6 +41,8 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     private Vector3 _movementDirection;
     private bool _grounded;
     private bool _readyToJump;
+    private bool _readyToDash;
+    private bool _isDashing;
     private float _moveSpeed;
 
     public float Velocity => _movementDirection.magnitude * _moveSpeed;
@@ -48,6 +55,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         _rb.useGravity = false;
         _moveSpeed = _walkSpeed;
         _readyToJump = true;
+        _readyToDash = true;
     }
 
     private void Update()
@@ -62,11 +70,14 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     
     public void Move(Vector2 inputDirection)
     {
+        if (!_isDashing)
+            _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
+        
         var rawDirection = new Vector3(inputDirection.x, 0f, inputDirection.y).normalized;
         var direction = _orientation.TransformDirection(rawDirection);
-        _movementDirection = ProjectDirection(direction);
         
-        if (!_grounded) return;
+        if (_grounded)
+            _movementDirection = ProjectDirection(direction);
         
         if (!CanMove())
         {
@@ -85,31 +96,53 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
         _rb.AddForce(-_gravityDirection * _jumpForce, ForceMode.Impulse);
         Invoke(nameof(ApplyJumpCulDown), _jumpCulDown);
-        StartCoroutine(JumpRoutine());
     }
 
     public void Dash()
     {
-        
+        if (!_readyToDash) return;
+
+        StartCoroutine(DashRoutine());
     }
 
+    public void Sprint(bool isSprinting)
+    {
+        StartCoroutine(SprintRoutine(isSprinting));
+    }
+    
     public void Stop()
     {
         _rb.MovePosition(_rb.position);
         _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
     }
 
-    private IEnumerator JumpRoutine()
+    private IEnumerator SprintRoutine(bool isSprinting)
     {
-        yield return new WaitWhile(() => _grounded);
+        if (!_grounded)
+            yield return new WaitUntil(() => _grounded);
         
-        while (!_grounded)
-        {
-            _rb.AddForce(_movementDirection * _moveSpeed);
-            yield return new WaitForFixedUpdate();
-        }
+        if (isSprinting)
+            _moveSpeed = _sprintSpeed;
+        else
+            _moveSpeed = _walkSpeed;
+    }
 
-        _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+    private IEnumerator DashRoutine()
+    {
+        _readyToDash = false;
+        _isDashing = true;
+        
+        var direction = new Vector3(_movementDirection.x, 0, _movementDirection.z).normalized;
+        if (direction == Vector3.zero)
+            direction = new Vector3(_orientation.forward.x, 0, _orientation.forward.z).normalized;
+        
+        _rb.AddForce(direction * _dashForce, ForceMode.Impulse);
+        yield return new WaitForSeconds(_dashTme);
+        _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
+        _isDashing = false;
+        
+        yield return new WaitForSeconds(_dashCulDown);
+        _readyToDash = true;
     }
     
     private void ApplyGravity()
