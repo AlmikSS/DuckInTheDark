@@ -5,6 +5,7 @@ using Zenject;
 public class PlayerMonoInstaller : MonoInstaller
 {
     [SerializeField] private RigidbodyPlayerMovement _playerMovement;
+    [SerializeField] private PlayerParkour _playerParkour;
     [SerializeField] private InputActionAsset _mainActionAsset;
     [SerializeField] private PlayerCamera _playerCamera;
     
@@ -13,5 +14,6 @@ public class PlayerMonoInstaller : MonoInstaller
         Container.BindInterfacesTo<RigidbodyPlayerMovement>().FromInstance(_playerMovement).AsSingle();
         Container.BindInterfacesTo<NewInputSystemSystem>().AsSingle().WithArguments(_mainActionAsset);
         Container.BindInterfacesTo<PlayerCamera>().FromInstance(_playerCamera).AsSingle();
+        Container.BindInterfacesTo<PlayerParkour>().FromInstance(_playerParkour).AsSingle();
     }
 }
