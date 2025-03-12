@@ -5,7 +5,8 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody))]
 public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 {
-    [Header("Movement")] [SerializeField] private Transform _orientation;
+    [Header("Movement")]
+    [SerializeField] private Transform _orientation;
     [SerializeField] private Transform _headCheckOrigin;
     [SerializeField] private LayerMask _obstacleLayerMask;
     [SerializeField] private float _checkObstacleDistance = 0.5f;
@@ -14,24 +15,27 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     [SerializeField] private float _slopeAngle = 45f;
     [SerializeField] private float _slopeCheckDistance = 0.5f;
 
-    [Header("Jump")] [SerializeField] private float _jumpForce = 5f;
+    [Header("Jump")]
+    [SerializeField] private float _jumpForce = 5f;
     [SerializeField] private float _jumpCulDown = 0.2f;
     [SerializeField] private Transform _ledgeCheckOrigin;
 
-    [Header("Dash")] [SerializeField] private float _dashForce = 50f;
+    [Header("Dash")]
+    [SerializeField] private float _dashForce = 50f;
     [SerializeField] private float _dashTme = 0.1f;
     [SerializeField] private float _dashCulDown = 0.5f;
 
-    [Header("Physics")] [SerializeField] private float _gravityForce = 9.81f;
+    [Header("Physics")]
+    [SerializeField] private float _gravityForce = 9.81f;
     [SerializeField] private Vector3 _gravityDirection = Vector3.down;
 
-    [Header("Ground Check")] [SerializeField]
-    private Transform _groundCheckOrigin;
-
+    [Header("Ground Check")]
+    [SerializeField] private Transform _groundCheckOrigin;
     [SerializeField] private LayerMask _groundLayerMask;
     [SerializeField] private float _groundCheckRadius;
 
-    [Header("Gizmos")] [SerializeField] private bool _drawGroundCheckGizmos;
+    [Header("Gizmos")]
+    [SerializeField] private bool _drawGroundCheckGizmos;
     [SerializeField] private Color _groundCheckGizmoColor = Color.blue;
     [SerializeField] private bool _drawMoveDirectionGizmos;
     [SerializeField] private Color _moveDirectionGizmoColor = Color.green;
@@ -42,6 +46,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 
     private Rigidbody _rb;
     private IPlayerParkour _playerParkour;
+    private MovementState _currentState;
     private Vector3 _movementDirection;
     private bool _grounded;
     private bool _readyToJump;
@@ -49,10 +54,10 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     private bool _isDashing;
     private bool _readyToMove;
     private bool _useGravity;
+    private bool _isClimbing;
     private float _moveSpeed;
-
-    public float Velocity => _movementDirection.magnitude * _moveSpeed;
-    public bool Grounded => _grounded;
+    
+    public MovementState MovementState => _currentState;
 
     [Inject]
     private void Construct(IPlayerParkour playerParkour)
@@ -75,6 +80,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     private void Update()
     {
         _grounded = Physics.CheckSphere(_groundCheckOrigin.position, _groundCheckRadius, _groundLayerMask);
+        HandleMovementState();
     }
 
     private void FixedUpdate()
@@ -150,11 +156,13 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 
     private IEnumerator Climb(Vector3 point)
     {
+        _isClimbing = true;
         _useGravity = false;
         _readyToMove = false;
         yield return _playerParkour.ApplyJump(point);
         _useGravity = true;
         _readyToMove = true;
+        _isClimbing = false;
         Stop();
     }
 
@@ -192,6 +200,25 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         if (_grounded || !_useGravity) return;
 
         _rb.AddForce(_gravityDirection * _gravityForce, ForceMode.Force);
+    }
+
+    private void HandleMovementState()
+    {
+        if (_isClimbing)
+            _currentState = MovementState.Climbing;
+        else if (_isDashing)
+            _currentState = MovementState.Dashing;
+        else if (!_grounded)
+            _currentState = MovementState.Landing;
+        else if (_movementDirection.magnitude > 0.1f)
+        {
+            if (_moveSpeed == _walkSpeed)
+                _currentState = MovementState.Walking;
+            else if (_moveSpeed == _sprintSpeed)
+                _currentState = MovementState.Running;
+        }
+        else 
+            _currentState = MovementState.Idle;
     }
 
     private Vector3 ProjectDirection(Vector3 forward)

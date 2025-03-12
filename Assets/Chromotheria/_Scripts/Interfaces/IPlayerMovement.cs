@@ -2,11 +2,20 @@
 
 public interface IPlayerMovement
 {
+    MovementState MovementState { get; }
     void Move(Vector2 inputDirection);
     void Jump();
     void Dash();
     void Sprint(bool isSprinting);
     void Stop();
-    float Velocity { get; }
-    bool Grounded { get; }
+}
+
+public enum MovementState
+{
+    Idle,
+    Walking,
+    Running,
+    Landing,
+    Dashing,
+    Climbing,
 }
