@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NewInputSystemSystem : IInputSystem
+public class NewInputSystem : IInputSystem
 {
     private InputActionAsset _actionAsset;
 
-    public NewInputSystemSystem(InputActionAsset actionAsset)
+    public NewInputSystem(InputActionAsset actionAsset)
     {
         _actionAsset = actionAsset;
     }

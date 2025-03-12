@@ -112,8 +112,6 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 
     public void Jump()
     {
-        if (!_grounded || !_readyToJump) return;
-
         StartCoroutine(JumpRoutine());
     }
 
@@ -146,6 +144,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         }
         else
         {
+            if (!_grounded || !_readyToJump) yield break;
             _readyToJump = false;
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
             _rb.AddForce(-_gravityDirection * _jumpForce, ForceMode.Impulse);
@@ -182,9 +181,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         _readyToDash = false;
         _isDashing = true;
 
-        var direction = new Vector3(_movementDirection.x, 0, _movementDirection.z).normalized;
-        if (direction == Vector3.zero)
-            direction = new Vector3(_orientation.forward.x, 0, _orientation.forward.z).normalized;
+        var direction = GetDirection();
 
         _rb.AddForce(direction * _dashForce, ForceMode.Impulse);
         yield return new WaitForSeconds(_dashTme);
@@ -231,6 +228,9 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 
     private Vector3 GetDirection()
     {
+        if (!_grounded)
+            return _orientation.forward;
+        
         var direction = _movementDirection.normalized;
         if (direction == Vector3.zero)
             direction = _orientation.forward;

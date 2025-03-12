@@ -12,7 +12,7 @@ public class PlayerMonoInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container.BindInterfacesTo<RigidbodyPlayerMovement>().FromInstance(_playerMovement).AsSingle();
-        Container.BindInterfacesTo<NewInputSystemSystem>().AsSingle().WithArguments(_mainActionAsset);
+        Container.BindInterfacesTo<NewInputSystem>().AsSingle().WithArguments(_mainActionAsset);
         Container.BindInterfacesTo<PlayerCamera>().FromInstance(_playerCamera).AsSingle();
         Container.BindInterfacesTo<PlayerParkour>().FromInstance(_playerParkour).AsSingle();
     }
