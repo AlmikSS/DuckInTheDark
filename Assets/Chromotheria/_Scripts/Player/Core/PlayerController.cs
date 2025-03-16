@@ -7,16 +7,19 @@ public class PlayerController : MonoBehaviour
     private IPlayerMovement _playerMovement;
     private IInputSystem _inputSystem;
     private IPlayerCamera _playerCamera;
+    private IPlayerCombat _playerCombat;
 
     private Vector2 _moveInputDirection;
     private Vector2 _lookInputDirection;
+    private Vector2 _weaponScroll;
     
     [Inject]
-    private void Construct(IPlayerMovement playerMovement, IInputSystem inputSystem, IPlayerCamera playerCamera)
+    private void Construct(IPlayerMovement playerMovement, IInputSystem inputSystem, IPlayerCamera playerCamera, IPlayerCombat playerCombat)
     {
         _playerMovement = playerMovement;
         _inputSystem = inputSystem;
         _playerCamera = playerCamera;
+        _playerCombat = playerCombat;
     }
 
     private void Update()
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         HandleVector2Inputs();
         HandleMovementInput();
+        _playerCombat.ChangeWeapon(_weaponScroll);
     }
 
     private void HandleMovementInput()
@@ -62,5 +66,6 @@ public class PlayerController : MonoBehaviour
     {
         _moveInputDirection = _inputSystem.GetVector2Input(InputKey.Move);
         _lookInputDirection = _inputSystem.GetVector2Input(InputKey.Look);
+        _weaponScroll = _inputSystem.GetVector2Input(InputKey.WeaponScroll);
     }
 }

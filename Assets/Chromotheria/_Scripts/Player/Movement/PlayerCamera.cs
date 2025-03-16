@@ -18,8 +18,8 @@ public class PlayerCamera : MonoBehaviour, IPlayerCamera
 
     public void Look(Vector2 delta)
     {
-        var x = delta.x;
-        var y = delta.y;
+        var x = delta.x * _sensitivity * Time.deltaTime;
+        var y = delta.y * _sensitivity * Time.deltaTime;
 
         _xRotation -= y;
         _yRotation += x;

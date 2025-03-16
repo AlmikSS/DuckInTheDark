@@ -5,11 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/EventBus.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/EventBus.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/ItemAddedInInvEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/ItemAddedInInvEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPlayerCombat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPlayerCombat.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/Item.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/Item.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/PlayerInventory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/PlayerInventory.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/NewInputSystemSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/NewInputSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/NewInputSystemSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/NewInputSystem.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerMonoInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerMonoInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/RigidbodyPlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/RigidbodyPlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/InputSystem_Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Settings/PC_RPAsset.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IAILocomotion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IAILocomotion.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IInputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IInputSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/NewInputSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/NewInputSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerCamera.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerCamera.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerMonoInstaller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerMonoInstaller.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerParkour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerParkour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/RigidbodyPlayerMovement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/RigidbodyPlayerMovement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +60,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2431722e3e3e41d78b6718bb39ab91111df400/d4/77e92304/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5780850fc704417799e38550144b43932ac00/6a/fbccd3b2/Physics.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Downloads/Chromotheria-Test-Almik_Dev/Chromotheria-Test-Almik_Dev/Assets/Chromoteria/_Scripts/Core/EventBus/EventBus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Downloads/Chromotheria-Test-Almik_Dev/Chromotheria-Test-Almik_Dev/Assets/Chromoteria/_Scripts/Core/GamePlaySceneInstaller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Downloads/Chromotheria-Test-Almik_Dev/Chromotheria-Test-Almik_Dev/Assets/Chromoteria/_Scripts/Core/ProjectInstaller.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Downloads/Chromotheria-Test-Almik_Dev/Chromotheria-Test-Almik_Dev/Assets/Chromoteria/_Scripts/GamePlay/AI/BehaviourTree/BehaviourTreeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../Downloads/Chromotheria-Test-Almik_Dev/Chromotheria-Test-Almik_Dev/Assets/Chromoteria/_Scripts/GamePlay/Player/Core/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -105,7 +149,10 @@
       <workItem from="1741416239190" duration="5995000" />
       <workItem from="1741461156587" duration="6570000" />
       <workItem from="1741692569880" duration="3952000" />
-      <workItem from="1741781459611" duration="11999000" />
+      <workItem from="1741781459611" duration="13509000" />
+      <workItem from="1741892845210" duration="2792000" />
+      <workItem from="1742065349824" duration="246000" />
+      <workItem from="1742111053635" duration="11139000" />
     </task>
     <servers />
   </component>

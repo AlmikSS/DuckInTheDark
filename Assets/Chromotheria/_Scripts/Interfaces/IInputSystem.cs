@@ -18,5 +18,7 @@ public enum InputKey
     Jump,
     Crouch,
     Sprint,
-    Dash
+    Dash,
+    Block,
+    WeaponScroll
 }

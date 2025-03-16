@@ -97,9 +97,14 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 
         var rawDirection = new Vector3(inputDirection.x, 0f, inputDirection.y).normalized;
         var direction = _orientation.TransformDirection(rawDirection);
-
+        
         if (_grounded)
             _movementDirection = ProjectDirection(direction);
+        else
+        {
+            if (rawDirection.magnitude > 0.1f)
+                _movementDirection = ProjectDirection(direction);
+        }
 
         if (!CanMove())
         {
