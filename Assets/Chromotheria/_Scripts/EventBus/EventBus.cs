@@ -27,7 +27,7 @@ namespace VH.Tools
             }
         }
 
-        public void Invoke<T>(T e, object sender) where T : Event
+        public void Invoke<T>(T e) where T : Event
         {
             var type = typeof(T);
             if (_events.ContainsKey(type))

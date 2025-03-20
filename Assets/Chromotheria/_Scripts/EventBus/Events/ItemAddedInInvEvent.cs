@@ -2,10 +2,10 @@
 
 public class ItemAddedInInvEvent : Event
 {
-    public readonly Item Item;
+    public readonly ItemSO ItemSO;
     
-    public ItemAddedInInvEvent(object sender, Item item) : base(sender)
+    public ItemAddedInInvEvent(object sender, ItemSO itemSo) : base(sender)
     {
-        Item = item;
+        ItemSO = itemSo;
     }
 }

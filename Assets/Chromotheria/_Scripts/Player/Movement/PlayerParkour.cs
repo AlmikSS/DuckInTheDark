@@ -8,6 +8,7 @@ public class PlayerParkour : MonoBehaviour, IPlayerParkour
     [SerializeField] private float _climbHeight;
     [SerializeField] private float _obstacleCheckDistance;
     [SerializeField] private float _climbSpeed;
+    [SerializeField] private float _climbAngle;
     
     public bool CheckObstacle(Vector3 direction, Vector3 origin, out Vector3 point)
     {
@@ -20,6 +21,10 @@ public class PlayerParkour : MonoBehaviour, IPlayerParkour
             if (maxY - y > _climbHeight)
                 return false;
 
+            var angle = Mathf.Abs(Vector3.Angle(Vector3.up, hit.normal));
+            if (angle <= _climbAngle)
+                return false;
+                    
             if (!Physics.Raycast(center, Vector3.up, _playerHeight + 0.1f, _obstacleLayerMask))
                 return true;
         }

@@ -20,5 +20,6 @@ public enum InputKey
     Sprint,
     Dash,
     Block,
-    WeaponScroll
+    WeaponScroll,
+    RightClick,
 }

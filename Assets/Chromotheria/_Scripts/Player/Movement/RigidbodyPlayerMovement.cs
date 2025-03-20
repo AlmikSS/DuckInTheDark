@@ -95,9 +95,11 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         if (!_isDashing)
             _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
 
+        // Преобразуем ввод в вектор направления
         var rawDirection = new Vector3(inputDirection.x, 0f, inputDirection.y).normalized;
         var direction = _orientation.TransformDirection(rawDirection);
         
+        // Высчтиваем вектор направления относительно нормали поверхности
         if (_grounded)
             _movementDirection = ProjectDirection(direction);
         else
@@ -106,12 +108,14 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
                 _movementDirection = ProjectDirection(direction);
         }
 
+        // Если не можем двигаться останавливаемся и завершаем работу метода
         if (!CanMove())
         {
             Stop();
             return;
         }
 
+        // Двигаем игрока в направлении с определенной скоростью
         _rb.MovePosition(_rb.position + _movementDirection * (_moveSpeed * Time.fixedDeltaTime));
     }
 
@@ -143,15 +147,18 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     {
         var direction = GetDirection();
 
-        if (_playerParkour.CheckObstacle(direction, transform.position, out var point))
+        // Если есть препятсвие и на него можно забратсья - начинаем взбирание
+        if (_playerParkour.CheckObstacle(direction, _ledgeCheckOrigin.position, out var point))
         {
             StartCoroutine(Climb(point));
         }
         else
         {
+            // Если мы не на земле или не готовы прыгать, останавливаемся
             if (!_grounded || !_readyToJump) yield break;
             _readyToJump = false;
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+            // Добавляем силу направленную вверх
             _rb.AddForce(-_gravityDirection * _jumpForce, ForceMode.Impulse);
             yield return new WaitForSeconds(_jumpCulDown);
             _readyToJump = true;
@@ -186,13 +193,16 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         _readyToDash = false;
         _isDashing = true;
 
+        // Считаем направление рывка
         var direction = GetDirection();
 
+        // Прикладываем силу в направлении рывка
         _rb.AddForce(direction * _dashForce, ForceMode.Impulse);
         yield return new WaitForSeconds(_dashTme);
         _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
         _isDashing = false;
 
+        // Ждем перезарядку
         yield return new WaitForSeconds(_dashCulDown);
         _readyToDash = true;
     }

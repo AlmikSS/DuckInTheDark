@@ -5,21 +5,23 @@ using Zenject;
 public class PlayerController : MonoBehaviour
 {
     private IPlayerMovement _playerMovement;
-    private IInputSystem _inputSystem;
     private IPlayerCamera _playerCamera;
+    private IInputSystem _inputSystem;
     private IPlayerCombat _playerCombat;
+    private IPlayerInteractions _playerInteractions;
 
     private Vector2 _moveInputDirection;
     private Vector2 _lookInputDirection;
     private Vector2 _weaponScroll;
     
     [Inject]
-    private void Construct(IPlayerMovement playerMovement, IInputSystem inputSystem, IPlayerCamera playerCamera, IPlayerCombat playerCombat)
+    private void Construct(IPlayerMovement playerMovement, IInputSystem inputSystem, IPlayerCamera playerCamera, IPlayerCombat playerCombat, IPlayerInteractions playerInteractions)
     {
         _playerMovement = playerMovement;
-        _inputSystem = inputSystem;
         _playerCamera = playerCamera;
+        _inputSystem = inputSystem;
         _playerCombat = playerCombat;
+        _playerInteractions = playerInteractions;
     }
 
     private void Update()
@@ -41,7 +43,20 @@ public class PlayerController : MonoBehaviour
     {
         HandleVector2Inputs();
         HandleMovementInput();
+        HandleCombatInput();
+        
+        if (_inputSystem.GetInputDown(InputKey.Interact))
+            _playerInteractions.TryInteract();
+    }
+
+    private void HandleCombatInput()
+    {
         _playerCombat.ChangeWeapon(_weaponScroll);
+        
+        if (_inputSystem.GetInputDown(InputKey.Attack))
+            _playerCombat.AttackBase();
+        if (_inputSystem.GetInputDown(InputKey.RightClick))
+            _playerCombat.AttackSpec();
     }
 
     private void HandleMovementInput()

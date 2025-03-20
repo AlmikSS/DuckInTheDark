@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerCamera : MonoBehaviour, IPlayerCamera
+public class PlayerCamera : MonoBehaviour, IPlayerCamera 
 {
     [SerializeField] private float _sensitivity;
     [SerializeField, Range(0, 90)] private float _cameraXClamp;
