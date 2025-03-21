@@ -5,64 +5,52 @@ using Zenject;
 [RequireComponent(typeof(PlayerCombatSlots))]
 public class PlayerCombat : MonoBehaviour, IPlayerCombat
 {
-    private PlayerCombatSlots _slots;
     private WeaponBase _currentWeapon;
-    private Animator _animator;
+    private PlayerCombatSlots _playerCombatSlots;
     private EventBus _eventBus;
 
     [Inject]
-    private void Construct(Animator animator, EventBus eventBus)
+    private void Construct(EventBus eventBus)
     {
-        _animator = animator;
         _eventBus = eventBus;
     }
-
+    
     private void Start()
     {
-        _slots = GetComponent<PlayerCombatSlots>();
-        _eventBus.Register<WeaponAddedToSlotEvent>(OnWeaponAddedInSlot);
+        _playerCombatSlots = GetComponent<PlayerCombatSlots>();
+        _eventBus.Register<WeaponAddedToSlotEvent>(OnWeaponAddedToSlot);
     }
 
-    private void OnWeaponAddedInSlot(WeaponAddedToSlotEvent e)
+    private void OnWeaponAddedToSlot(WeaponAddedToSlotEvent e)
     {
-        if (e.Slot == _slots.CurrentSlot)
+        if (e.Slot == _playerCombatSlots.CurrentSlot)
             _currentWeapon = e.Weapon;
     }
     
-    public void AttackBase()
+    public void Attack(bool isRightMouseBtn)
     {
         if (_currentWeapon != null)
-            _currentWeapon.Attack(_animator);
+            _currentWeapon.Attack(isRightMouseBtn);
     }
 
-    public void AttackSpec()
+    public void ChangeWeaponSlot(Vector2 mouseWealDelta)
     {
-        if (_currentWeapon != null)
-            _currentWeapon.Attack(_animator, true);
-    }
-
-    public void UseAdditionalWeapon()
-    {
-    }
-
-    public void ChangeWeapon(Vector2 scrollInput)
-    {
-        var currentSlot = _slots.CurrentSlot;
+        var currentSlot = _playerCombatSlots.CurrentSlot;
         
-        if (scrollInput.y > 0)
-            ChangeWeapon(currentSlot + 1);
-        else if (scrollInput.y < 0)
-            ChangeWeapon(currentSlot - 1);
+        if (mouseWealDelta.y > 0)
+            ChangeWeaponSlot(currentSlot + 1);
+        else if (mouseWealDelta.y < 0)
+            ChangeWeaponSlot(currentSlot - 1);
     }
-    
-    public void ChangeWeapon(int index)
+
+    public void ChangeWeaponSlot(int index)
     {
-        if (_slots.ChangeSlot(index))
-            _currentWeapon = _slots.GetCurrentWeapon();
+        if (_playerCombatSlots.ChangeSlot(index))
+            _currentWeapon = _playerCombatSlots.GetCurrentWeapon();
     }
 
     private void OnDestroy()
     {
-        _eventBus.Unregister<WeaponAddedToSlotEvent>(OnWeaponAddedInSlot);
+        _eventBus.Unregister<WeaponAddedToSlotEvent>(OnWeaponAddedToSlot);
     }
 }

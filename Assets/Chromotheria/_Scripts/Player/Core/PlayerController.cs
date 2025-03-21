@@ -7,21 +7,21 @@ public class PlayerController : MonoBehaviour
     private IPlayerMovement _playerMovement;
     private IPlayerCamera _playerCamera;
     private IInputSystem _inputSystem;
-    private IPlayerCombat _playerCombat;
     private IPlayerInteractions _playerInteractions;
+    private IPlayerCombat _playerCombat;
 
     private Vector2 _moveInputDirection;
     private Vector2 _lookInputDirection;
     private Vector2 _weaponScroll;
     
     [Inject]
-    private void Construct(IPlayerMovement playerMovement, IInputSystem inputSystem, IPlayerCamera playerCamera, IPlayerCombat playerCombat, IPlayerInteractions playerInteractions)
+    private void Construct(IPlayerMovement playerMovement, IInputSystem inputSystem, IPlayerCamera playerCamera, IPlayerInteractions playerInteractions, IPlayerCombat playerCombat)
     {
         _playerMovement = playerMovement;
         _playerCamera = playerCamera;
         _inputSystem = inputSystem;
-        _playerCombat = playerCombat;
         _playerInteractions = playerInteractions;
+        _playerCombat = playerCombat;
     }
 
     private void Update()
@@ -51,14 +51,15 @@ public class PlayerController : MonoBehaviour
 
     private void HandleCombatInput()
     {
-        _playerCombat.ChangeWeapon(_weaponScroll);
-        
         if (_inputSystem.GetInputDown(InputKey.Attack))
-            _playerCombat.AttackBase();
-        if (_inputSystem.GetInputDown(InputKey.RightClick))
-            _playerCombat.AttackSpec();
-    }
+            _playerCombat.Attack(false);
 
+        if (_inputSystem.GetInputDown(InputKey.RightClick))
+            _playerCombat.Attack(true);
+        
+        _playerCombat.ChangeWeaponSlot(_weaponScroll);
+    }
+    
     private void HandleMovementInput()
     {
         HandleSprintInput();

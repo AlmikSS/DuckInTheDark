@@ -1,69 +1,92 @@
 ﻿using System.Collections;
 using UnityEngine;
+using VH.Tools;
+using Zenject;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    [SerializeField] private float _reloadTime = 3f;
-    [SerializeField] private float _comboWaitTime = 0.3f;
-    [SerializeField] protected int _damage = 7;
-    [SerializeField] private int _attackBaseCombo;
-    [SerializeField] private int _attackSpecCombo;
+    [SerializeField] private float _reloadTime = 5f;
+    [SerializeField] private float _cancelReloadWaitTime = 0.3f;
+    [SerializeField] private float _comboWaitDelay = 0.2f; 
+    [SerializeField] private int _comboCount = 3;
+    
+    private EventBus _eventBus;
+    private bool _canCancelReload;
+    private float _lastAttackTime;
+    private int _currentCombo;
+    
+    public WeaponState State { get; protected set; }
 
-    protected Coroutine _reloadCoroutine;
-    protected WeaponState _state;
-    protected float _comboTimer = 0f;
-    private float _lastReloadTime = 0f;
-    private int _currentCombo = 0;
-
-    public WeaponState State => _state;
-
-    public void Attack( Animator animator, bool isSpecial = false)
+    [Inject]
+    private void Construct(EventBus eventBus)
     {
-        if (_state == WeaponState.Idle)
-        {
-            if (Time.time - _comboTimer > _comboWaitTime)
-                _currentCombo = 0;
-
-            _currentCombo++;
-
-            var maxCombo = isSpecial ? _attackBaseCombo : _attackSpecCombo;
-
-            if (_currentCombo >= maxCombo)
-            {
-                StartCoroutine(AttackComboRoutine(animator, isSpecial));
-                _currentCombo = 0;
-                return;
-            }
-
-            StartCoroutine(AttackRoutine(animator, isSpecial));
-        }
+        _eventBus = eventBus;
+        _eventBus.Register<CombatSlotChangedEvent>(OnSlotChanged);
+        Debug.Log(0);
     }
 
-    public bool TryStopReload()
+    private void Start()
     {
-        if (_reloadCoroutine != null && Time.time - _lastReloadTime <= _comboWaitTime)
+        
+    }
+
+    private void OnSlotChanged(CombatSlotChangedEvent e)
+    {
+        Debug.Log("OnSlotChanged");
+        
+        if (_canCancelReload)
         {
-            StopCoroutine(_reloadCoroutine);
-            _reloadCoroutine = null;
-            _state = WeaponState.Idle;
-            return true;
+            Debug.Log(938459384579438567);
+            State = WeaponState.Idle;
+        }
+    }
+    
+    public void Attack(bool isRightMouseBtn)
+    {
+        if (State != WeaponState.Idle)
+            return;
+
+        State = WeaponState.Attacking;
+
+        if (Time.time - _lastAttackTime > _comboWaitDelay)
+            _currentCombo = 0;
+        
+        _currentCombo++;
+        _lastAttackTime = Time.time;
+
+        if (_currentCombo >= _comboCount)
+        {
+            _currentCombo = 0;
+            StartCoroutine(ComboRoutine(isRightMouseBtn));
+            return;
         }
         
-        return false;
+        StartCoroutine(AttackRoutine(isRightMouseBtn));
     }
 
-    protected IEnumerator ReloadRoutine()
+    protected abstract IEnumerator AttackRoutine(bool isRightMouseBtn);
+    protected abstract IEnumerator ComboRoutine(bool isRightMouseBtn);
+
+    protected void Reload()
     {
-        _state = WeaponState.Reloading;
-        _lastReloadTime = Time.time;
-        yield return new WaitForSeconds(_reloadTime);
-        _state = WeaponState.Idle;
-        _reloadCoroutine = null;
+        _canCancelReload = true;
+        Invoke(nameof(ResetCancelReload), _cancelReloadWaitTime);
+        State = WeaponState.Reloading;
+        Invoke(nameof(EndReloading), _reloadTime);
     }
 
-    protected abstract IEnumerator AttackRoutine(Animator animator, bool isSpecial = false);
+    private void EndReloading()
+    {
+        _canCancelReload = false;
+        State = WeaponState.Idle;
+    }
     
-    protected abstract IEnumerator AttackComboRoutine(Animator animator, bool isSpecial = false);
+    private void ResetCancelReload() => _canCancelReload = false;
+
+    private void OnDestroy()
+    {
+        _eventBus.Unregister<CombatSlotChangedEvent>(OnSlotChanged);
+    }
 }
 
 public enum WeaponState

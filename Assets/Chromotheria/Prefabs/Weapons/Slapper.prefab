@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854898849686416315}
-  - component: {fileID: 6322476423780964299}
+  - component: {fileID: 3925017934899367247}
   - component: {fileID: 2273924543275486583}
   - component: {fileID: 4122309352242234986}
   - component: {fileID: 2713020530850342663}
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 4744836941118537676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6322476423780964299
+--- !u!114 &3925017934899367247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +45,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5699944014886453501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4f06377dec4e7f94bd101d5182156c, type: 3}
+  m_Script: {fileID: 11500000, guid: 441e5f740ce54d38b9fdeae0395a0213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 4
-  _comboWaitTime: 0.2
-  _damage: 7
-  _attackBaseCombo: 4
-  _attackSpecCombo: 4
+  _reloadTime: 5
+  _cancelReloadWaitTime: 0.3
+  _comboWaitDelay: 0.2
+  _comboCount: 3
 --- !u!114 &2273924543275486583
 MonoBehaviour:
   m_ObjectHideFlags: 0

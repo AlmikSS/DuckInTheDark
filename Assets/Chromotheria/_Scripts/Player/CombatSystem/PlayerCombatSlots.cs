@@ -5,9 +5,9 @@ using Zenject;
 
 public class PlayerCombatSlots : MonoBehaviour
 {
+    [SerializeField] private Transform _rigthHandeTransform;
+    [SerializeField] private Transform _leftHandeTransform;
     [SerializeField] private int _maxSlots;
-    [SerializeField] private Transform _rightHandle;
-    [SerializeField] private Transform _leftHandle;
     
     private List<WeaponBase> _weapons = new();
     private EventBus _eventBus;
@@ -20,7 +20,7 @@ public class PlayerCombatSlots : MonoBehaviour
     {
         _eventBus = eventBus;
     }
-
+    
     private void Start()
     {
         for (var i = 0; i < _maxSlots; i++)
@@ -34,76 +34,70 @@ public class PlayerCombatSlots : MonoBehaviour
     private void OnItemAddedInInv(ItemAddedInInvEvent e)
     {
         var item = e.ItemSO;
-        
+
         if (item.Data.ItemType == ItemType.Weapon)
-        {
-            if (item.ItemPrefab.TryGetComponent(out WeaponBase _))
-                AddWeaponToFreeSlot(item.ItemPrefab);
-        }
+            AddWeaponToSlots(item.ItemPrefab);
     }
-
-    private void AddWeaponToFreeSlot(GameObject weapon)
+    
+    private void AddWeaponToSlots(GameObject weaponPrefab)
     {
-        if (!TryAddToCurrentSlot(weapon))
-        {
-            for (var i = 0; i < _weapons.Count; i++)
-            {
-                if (_weapons[i] == null)
-                {
-                    AddWeaponInSlot(weapon, i);
-                    return;
-                }
-            }
-        }
+        if (!TryAddToCurrentSlot(weaponPrefab))
+            TryAddWeaponToAnySlot(weaponPrefab);
     }
 
-    private bool TryAddToCurrentSlot(GameObject weapon)
+    private bool TryAddToCurrentSlot(GameObject prefab)
     {
         if (_weapons[_currentSlot] != null)
             return false;
+
+        return AddWeaponToSlot(prefab, _currentSlot);
+    }
+
+    private bool TryAddWeaponToAnySlot(GameObject prefab)
+    {
+        for (var i = 0; i < _weapons.Count; i++)
+        {
+            if (_weapons[i] == null)
+                return AddWeaponToSlot(prefab, i);
+        }
         
-        AddWeaponInSlot(weapon, _currentSlot);
+        return false;
+    }
+    
+    private bool AddWeaponToSlot(GameObject prefab, int slot)
+    {
+        if (!prefab.TryGetComponent(out WeaponBase _))
+            return false;
         
+        var obj = Instantiate(prefab, _rigthHandeTransform).GetComponent<WeaponBase>();
+        _weapons[slot] = obj;
+        _eventBus.Invoke(new WeaponAddedToSlotEvent(this, obj, slot));
         return true;
     }
-    
-    private void AddWeaponInSlot(GameObject weapon, int slotId)
-    {
-        var obj = Instantiate(weapon, _rightHandle.position, _rightHandle.rotation, _rightHandle).GetComponent<WeaponBase>();
-        _weapons[slotId] = obj;
-        _eventBus.Invoke(new WeaponAddedToSlotEvent(this, obj, slotId));
-    }
-    
+
     public bool ChangeSlot(int slot)
     {
-        if (slot < 0 || slot > _weapons.Count - 1) return false;
+        if (slot < 0 || slot > _weapons.Count - 1)
+            return false;
         
         if (_weapons[_currentSlot] != null)
         {
             if (_weapons[_currentSlot].State == WeaponState.Attacking)
                 return false;
             
-            if (_weapons[_currentSlot].State == WeaponState.Reloading)
-                _weapons[_currentSlot].TryStopReload();
-            
             _weapons[_currentSlot].gameObject.SetActive(false);
         }
         
         _currentSlot = slot;
-        
         if (_weapons[_currentSlot] != null)
             _weapons[_currentSlot].gameObject.SetActive(true);
         
+        _eventBus.Invoke(new CombatSlotChangedEvent(this));
         return true;
     }
-
+    
     public WeaponBase GetCurrentWeapon()
     {
         return _weapons[_currentSlot];
-    }
-
-    public void OnDestroy()
-    {
-        _eventBus.Unregister<ItemAddedInInvEvent>(OnItemAddedInInv);
     }
 }

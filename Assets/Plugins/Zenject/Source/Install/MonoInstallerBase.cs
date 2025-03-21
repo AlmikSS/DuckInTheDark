@@ -12,6 +12,7 @@ namespace Zenject
     public class MonoInstallerBase : MonoBehaviour, IInstaller
     {
         [Inject]
+        
         protected DiContainer Container
         {
             get; set;

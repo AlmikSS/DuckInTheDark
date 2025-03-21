@@ -3,31 +3,17 @@ using UnityEngine;
 
 public class SlapperWeapon : WeaponBase
 {
-    protected override IEnumerator AttackRoutine(Animator animator, bool isSpecial = false)
+    protected override IEnumerator AttackRoutine(bool isRightMouseBtn)
     {
-        _state = WeaponState.Attacking;
-        
-        animator.SetBool(AnimatorConstants.IsSpecBoolAnimName, isSpecial);
-        animator.SetTrigger(AnimatorConstants.AttackTriggerAnimName);
-        
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0);
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.85f);
-        
-        _comboTimer = Time.time;
-        _state = WeaponState.Idle;
+        Debug.Log("attack");
+        yield return null;
+        State = WeaponState.Idle;
     }
 
-    protected override IEnumerator AttackComboRoutine(Animator animator, bool isSpecial = false)
+    protected override IEnumerator ComboRoutine(bool isRightMouseBtn)
     {
-        Debug.Log("Combo started!");
-        _state = WeaponState.Attacking;
-        
-        animator.SetBool(AnimatorConstants.IsSpecBoolAnimName, isSpecial);
-        animator.SetTrigger(AnimatorConstants.AttackTriggerAnimName);
-        
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0);
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.85f);
-        
-        _reloadCoroutine = StartCoroutine(ReloadRoutine());
+        Debug.Log("combo");
+        yield return null;
+        Reload();
     }
 }

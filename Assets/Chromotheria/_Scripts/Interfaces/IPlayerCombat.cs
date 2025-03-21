@@ -2,9 +2,7 @@
 
 public interface IPlayerCombat
 {
-    void AttackBase();
-    void AttackSpec();
-    void UseAdditionalWeapon();
-    void ChangeWeapon(Vector2 scrollInput);
-    void ChangeWeapon(int index);
+    void Attack(bool isRightMouseBtn);
+    void ChangeWeaponSlot(Vector2 mouseWealDelta);
+    void ChangeWeaponSlot(int index);
 }

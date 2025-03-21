@@ -21,6 +21,7 @@ namespace VH.Tools
             var type = typeof(T);
             if (_events.ContainsKey(type))
             {
+                Debug.Log($"Unregister {type.Name}");
                 _events[type].Remove(handler);
                 if (_events[type].Count == 0)
                     _events.Remove(type);
@@ -37,6 +38,7 @@ namespace VH.Tools
                     try
                     {
                         var action = handler as Action<T>;
+                        Debug.Log($"Invoking: {type}, method: {action?.Method.Name}");
                         action?.Invoke(e);
                     }
                     catch (Exception ex)
