@@ -9,11 +9,12 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] private float _cancelReloadWaitTime = 0.3f;
     [SerializeField] private float _comboWaitDelay = 0.2f; 
     [SerializeField] private int _comboCount = 3;
+    [SerializeField] protected int _damage;
     
     private EventBus _eventBus;
     private bool _canCancelReload;
-    private float _lastAttackTime;
-    private int _currentCombo;
+    protected float _lastAttackTime;
+    protected int _currentCombo;
     
     public WeaponState State { get; protected set; }
 
@@ -22,26 +23,15 @@ public abstract class WeaponBase : MonoBehaviour
     {
         _eventBus = eventBus;
         _eventBus.Register<CombatSlotChangedEvent>(OnSlotChanged);
-        Debug.Log(0);
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void OnSlotChanged(CombatSlotChangedEvent e)
     {
-        Debug.Log("OnSlotChanged");
-        
         if (_canCancelReload)
-        {
-            Debug.Log(938459384579438567);
             State = WeaponState.Idle;
-        }
     }
     
-    public void Attack(bool isRightMouseBtn)
+    public void Attack(bool isRightMouseBtn, Animator animator)
     {
         if (State != WeaponState.Idle)
             return;
@@ -50,22 +40,19 @@ public abstract class WeaponBase : MonoBehaviour
 
         if (Time.time - _lastAttackTime > _comboWaitDelay)
             _currentCombo = 0;
-        
-        _currentCombo++;
-        _lastAttackTime = Time.time;
 
         if (_currentCombo >= _comboCount)
         {
             _currentCombo = 0;
-            StartCoroutine(ComboRoutine(isRightMouseBtn));
+            StartCoroutine(ComboRoutine(isRightMouseBtn, animator));
             return;
         }
         
-        StartCoroutine(AttackRoutine(isRightMouseBtn));
+        StartCoroutine(AttackRoutine(isRightMouseBtn, animator));
     }
 
-    protected abstract IEnumerator AttackRoutine(bool isRightMouseBtn);
-    protected abstract IEnumerator ComboRoutine(bool isRightMouseBtn);
+    protected abstract IEnumerator AttackRoutine(bool isRightMouseBtn, Animator animator);
+    protected abstract IEnumerator ComboRoutine(bool isRightMouseBtn, Animator animator);
 
     protected void Reload()
     {

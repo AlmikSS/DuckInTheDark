@@ -3,7 +3,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(Rigidbody))]
-public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
+public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
 {
     [Header("Movement")]
     [SerializeField] private Transform _orientation;
@@ -79,7 +79,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
 
     private void Update()
     {
-        _grounded = Physics.CheckSphere(_groundCheckOrigin.position, _groundCheckRadius, _groundLayerMask);
+        HandleGrounded();
         HandleMovementState();
     }
 
@@ -91,9 +91,6 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
     public void Move(Vector2 inputDirection)
     {
         if (!_readyToMove) return;
-
-        if (!_isDashing)
-            _rb.linearVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
 
         // Преобразуем ввод в вектор направления
         var rawDirection = new Vector3(inputDirection.x, 0f, inputDirection.y).normalized;
@@ -214,6 +211,17 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         _rb.AddForce(_gravityDirection * _gravityForce, ForceMode.Force);
     }
 
+    private void HandleGrounded()
+    {
+        if (!_grounded)
+        {
+            if (Physics.CheckSphere(_groundCheckOrigin.position, _groundCheckRadius, _groundLayerMask))
+                _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+        }
+
+        _grounded = Physics.CheckSphere(_groundCheckOrigin.position, _groundCheckRadius, _groundLayerMask);
+    }
+    
     private void HandleMovementState()
     {
         if (_isClimbing)
@@ -232,7 +240,17 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement
         else 
             _currentState = MovementState.Idle;
     }
+    
+    public void Push(Vector3 direction, float force)
+    {
+        
+    }
 
+    public void ApplyExplosion(Vector3 origin, float force, float radius)
+    {
+        _rb.AddExplosionForce(force, origin, radius, force, ForceMode.Impulse);
+    }
+    
     private Vector3 ProjectDirection(Vector3 forward)
     {
         Physics.Raycast(_groundCheckOrigin.position, _gravityDirection, out var hit, _groundCheckRadius, _groundLayerMask);

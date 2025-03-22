@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f867b0ced1434bbc9b7bb0aa1f15f12e, type: 3}
+  m_Name: RaccoonCannon
+  m_EditorClassIdentifier: 
+  _data:
+    ItemId: 1
+    MaxStack: 1
+    ItemType: 1
+  _itemPrefab: {fileID: 2411596445735966683, guid: c787bb909cb836241b49ee1473c4a164, type: 3}

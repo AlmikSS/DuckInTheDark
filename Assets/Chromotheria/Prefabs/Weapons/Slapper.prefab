@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4569159806075924070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3690956440091689438}
+  m_Layer: 6
+  m_Name: DamageSphereOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3690956440091689438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4569159806075924070}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7854898849686416315}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5699944014886453501
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +43,7 @@ GameObject:
   - component: {fileID: 3925017934899367247}
   - component: {fileID: 2273924543275486583}
   - component: {fileID: 4122309352242234986}
-  - component: {fileID: 2713020530850342663}
+  - component: {fileID: 8406969699981662295}
   m_Layer: 6
   m_Name: Slapper
   m_TagString: Untagged
@@ -34,6 +65,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4744836941118537676}
+  - {fileID: 3690956440091689438}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3925017934899367247
@@ -52,6 +84,8 @@ MonoBehaviour:
   _cancelReloadWaitTime: 0.3
   _comboWaitDelay: 0.2
   _comboCount: 3
+  _damage: 10
+  _damager: {fileID: 8406969699981662295}
 --- !u!114 &2273924543275486583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,28 +120,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5869435, y: 1.7890425, z: 0.13475579}
   m_Center: {x: -0.0021741986, y: 0.6336589, z: -0.0021739155}
---- !u!95 &2713020530850342663
-Animator:
-  serializedVersion: 7
+--- !u!114 &8406969699981662295
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5699944014886453501}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8d938e9f78d269f40b785edd5e927895, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1b48efacd24072b1365bad25302cca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageSphereOrigin: {fileID: 3690956440091689438}
+  _damagableLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _damageSphereRadius: 1
+  _applyDamageDelay: 0.1
+  _pushForce: 10
 --- !u!1001 &5067593508936226855
 PrefabInstance:
   m_ObjectHideFlags: 0

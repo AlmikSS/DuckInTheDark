@@ -5,29 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/CombatSlotChangedEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/CombatSlotChangedEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPushable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPushable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/SlapperDamager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/SlapperDamager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/Projectile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/Projectile.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/RaccoonCannonProjectile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/RaccoonCannonProjectile.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/RaccoonCannon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/RaccoonCannon.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/InputSystem_Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/InputSystem_Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Anim/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Anim/Player/Player.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/Weapons/Slapper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/Weapons/Slapper.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPlayerCombat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPlayerCombat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPlayerCombat.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPlayerCombat.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Constants/AnimatorConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Constants/AnimatorConstants.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/SlapperWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/SlapperWeapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/SlapperWeapon.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/SlapperWeapon.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerMonoInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerMonoInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Install/MonoInstallerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Install/MonoInstallerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +41,7 @@
     <setting file="file://$PROJECT_DIR$/../Chromotheria-Test/Assets/Chromoteria/_Scripts/GamePlay/Player/Interaction/PlayerCombat.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Chromotheria-Test/Assets/Chromoteria/_Scripts/GamePlay/Player/Slots/PlayerSlots.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Chromotheria-Test/Assets/Chromoteria/_Scripts/GamePlay/Weapons/WeaponBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/TestDamagableHer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -138,6 +136,8 @@
       <workItem from="1742491770739" duration="2679000" />
       <workItem from="1742544744151" duration="6752000" />
       <workItem from="1742551830016" duration="2647000" />
+      <workItem from="1742556242737" duration="1265000" />
+      <workItem from="1742637488908" duration="11998000" />
     </task>
     <servers />
   </component>

@@ -8,11 +8,13 @@ public class PlayerCombat : MonoBehaviour, IPlayerCombat
     private WeaponBase _currentWeapon;
     private PlayerCombatSlots _playerCombatSlots;
     private EventBus _eventBus;
+    private Animator _animator;
 
     [Inject]
-    private void Construct(EventBus eventBus)
+    private void Construct(EventBus eventBus, Animator animator)
     {
         _eventBus = eventBus;
+        _animator = animator;
     }
     
     private void Start()
@@ -30,7 +32,7 @@ public class PlayerCombat : MonoBehaviour, IPlayerCombat
     public void Attack(bool isRightMouseBtn)
     {
         if (_currentWeapon != null)
-            _currentWeapon.Attack(isRightMouseBtn);
+            _currentWeapon.Attack(isRightMouseBtn, _animator);
     }
 
     public void ChangeWeaponSlot(Vector2 mouseWealDelta)

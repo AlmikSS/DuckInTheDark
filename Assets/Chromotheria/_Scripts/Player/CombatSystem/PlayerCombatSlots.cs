@@ -70,6 +70,7 @@ public class PlayerCombatSlots : MonoBehaviour
             return false;
         
         var obj = Instantiate(prefab, _rigthHandeTransform).GetComponent<WeaponBase>();
+        ProjectContext.Instance.Container.Inject(obj);
         _weapons[slot] = obj;
         _eventBus.Invoke(new WeaponAddedToSlotEvent(this, obj, slot));
         return true;
