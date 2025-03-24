@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _force: 30
-  _explosionRadius: 10
+  _explosionRadius: 5
   _explosionForce: 5
   _damagableLayerMask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 384

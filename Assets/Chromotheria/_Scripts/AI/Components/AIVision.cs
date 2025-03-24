@@ -16,7 +16,7 @@ namespace VH.AI
 
         private List<GameObject> _visibleObjects = new();
 
-        public IReadOnlyList<GameObject> VisibleObjects => _visibleObjects;
+        public List<GameObject> VisibleObjects => _visibleObjects;
 
         private void Start()
         {

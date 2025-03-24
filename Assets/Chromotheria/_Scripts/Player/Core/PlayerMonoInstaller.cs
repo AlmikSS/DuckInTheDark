@@ -13,6 +13,7 @@ public class PlayerMonoInstaller : MonoInstaller
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private Camera _camera;
     [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerStats _playerStats;
     
     public override void InstallBindings()
     {
@@ -25,5 +26,6 @@ public class PlayerMonoInstaller : MonoInstaller
         Container.Bind<PlayerInventory>().FromInstance(_playerInventory).AsSingle();
         Container.Bind<Camera>().FromInstance(_camera).AsSingle();
         Container.Bind<Animator>().FromInstance(_animator).AsSingle();
+        Container.Bind<PlayerStats>().FromInstance(_playerStats).AsSingle();
     }
 }

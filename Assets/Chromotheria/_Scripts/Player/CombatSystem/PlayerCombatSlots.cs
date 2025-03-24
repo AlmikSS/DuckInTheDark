@@ -72,6 +72,8 @@ public class PlayerCombatSlots : MonoBehaviour
         var obj = Instantiate(prefab, _rigthHandeTransform).GetComponent<WeaponBase>();
         ProjectContext.Instance.Container.Inject(obj);
         _weapons[slot] = obj;
+        if (_currentSlot != slot)
+            _weapons[slot].gameObject.SetActive(false);
         _eventBus.Invoke(new WeaponAddedToSlotEvent(this, obj, slot));
         return true;
     }

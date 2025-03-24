@@ -1,22 +1,21 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _playerMovementStateText;
+    [SerializeField] private Image _healthBarImage;
     
-    private IPlayerMovement _playerMovement;
+    private PlayerStats _playerStats;
 
     [Inject]
-    private void Construct(IPlayerMovement playerMovement)
+    private void Construct(PlayerStats playerStats)
     {
-        _playerMovement = playerMovement;
+        _playerStats = playerStats;
     }
 
     private void Update()
     {
-        var movementState = _playerMovement.MovementState.ToString();
-        _playerMovementStateText.SetText(movementState);
+        _healthBarImage.fillAmount = _playerStats.CurrentHealth / (float)_playerStats.MaxHealth;
     }
 }

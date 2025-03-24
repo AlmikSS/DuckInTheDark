@@ -13,7 +13,7 @@ public class PlayerInventory : MonoBehaviour
     {
         _eventBus = eventBus;
     }
-
+    
     public void AddItem(ItemSO item, GameObject instance)
     {
         if (_items.ContainsKey(item))
@@ -33,5 +33,15 @@ public class PlayerInventory : MonoBehaviour
     public void RemoveItem(ItemSO item)
     {
         
+    }
+
+    public bool HaveItem(ItemSO item, int amount)
+    {
+        if (_items.ContainsKey(item))
+        {
+            return _items[item] >= amount;
+        }
+        
+        return false;
     }
 }

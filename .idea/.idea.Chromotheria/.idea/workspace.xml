@@ -5,26 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPushable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Interfaces/IPushable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/SlapperDamager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/SlapperDamager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/Projectile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/Projectile.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/RaccoonCannonProjectile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Projectiles/RaccoonCannonProjectile.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/RaccoonCannon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/RaccoonCannon.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Mobs/TestBoss.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Mobs/TestBoss.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Enviroment/Test/Spinner.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Enviroment/Test/Spinner.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/LoseEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/LoseEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/WinEvent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/WinEvent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/BossDamager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/BossDamager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerStats.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerStats.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Anim/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Anim/Player/Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/Weapons/Slapper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/Weapons/Slapper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/RacoonCanonProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/RacoonCanonProjectile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Constants/AnimatorConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Constants/AnimatorConstants.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Components/AIVision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Components/AIVision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/EventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/EventBus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/WeaponBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/SlapperWeapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/SlapperWeapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerMonoInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerMonoInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/PlayerInventory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +43,11 @@
     <setting file="file://$PROJECT_DIR$/../Chromotheria-Test/Assets/Chromoteria/_Scripts/GamePlay/Player/Interaction/PlayerCombat.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Chromotheria-Test/Assets/Chromoteria/_Scripts/GamePlay/Player/Slots/PlayerSlots.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Chromotheria-Test/Assets/Chromoteria/_Scripts/GamePlay/Weapons/WeaponBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Enviroment/Test/FinalBtn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Enviroment/Test/TestTrapScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/LoseEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/TestDamagableHer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Chromotheria/_Scripts/UI/LoseWinUI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -138,6 +144,8 @@
       <workItem from="1742551830016" duration="2647000" />
       <workItem from="1742556242737" duration="1265000" />
       <workItem from="1742637488908" duration="11998000" />
+      <workItem from="1742786441780" duration="5333000" />
+      <workItem from="1742792499431" duration="5985000" />
     </task>
     <servers />
   </component>

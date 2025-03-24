@@ -14,6 +14,7 @@ namespace VH.Tools
             if (!_events.ContainsKey(type))
                 _events[type] = new List<Delegate>();
             _events[type].Add(handler);
+            Debug.Log($"Registered {type.Name}");
         }
 
         public void Unregister<T>(Action<T> handler)
