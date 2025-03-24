@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Mobs/TestBoss.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Mobs/TestBoss.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Enviroment/Test/Spinner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Enviroment/Test/Spinner.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/LoseEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/LoseEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/WinEvent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/Events/WinEvent.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/BossDamager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Damagers/BossDamager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerStats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerStats.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/RacoonCanonProjectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Prefabs/RacoonCanonProjectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Components/AIVision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Components/AIVision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/EventBus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/EventBus/EventBus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/PlayerCombatSlots.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerMonoInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Core/PlayerMonoInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Inventory/PlayerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/PlayerUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,7 +122,7 @@
       <workItem from="1742556242737" duration="1265000" />
       <workItem from="1742637488908" duration="11998000" />
       <workItem from="1742786441780" duration="5333000" />
-      <workItem from="1742792499431" duration="5985000" />
+      <workItem from="1742792499431" duration="7570000" />
     </task>
     <servers />
   </component>

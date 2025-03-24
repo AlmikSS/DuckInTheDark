@@ -43,11 +43,14 @@ public class TestBoss : MonoBehaviour, IDamageable
             if (_rangeCheckCoroutine == null)
                 _rangeCheckCoroutine = StartCoroutine(RangeCheckRoutine());
         }
+        
+        _animator.SetFloat("Velocity", Mathf.Abs(_agent.velocity.magnitude));
     }
 
     private void AgrState()
     {
-        _agent.SetDestination(_target.position);
+        if (!_isAttacking)
+            _agent.SetDestination(_target.position);
         
         var distance = Vector3.Distance(_target.position, transform.position);
         if (distance < _attackDistance)
@@ -59,6 +62,7 @@ public class TestBoss : MonoBehaviour, IDamageable
         if (_isAttacking)
             yield break;
         
+        _agent.isStopped = true;
         _isAttacking = true;
         var i = Random.Range(0, 5);
         _animator.Play($"Attack{i}");
@@ -69,13 +73,16 @@ public class TestBoss : MonoBehaviour, IDamageable
         _rightDamager.StopApplyDamage();
         _leftDamager.StopApplyDamage();
         _isAttacking = false;
+        _agent.isStopped = false;
     }
 
     private IEnumerator RangeRoutine()
     {
-        _animator.Play("Range");
+        _agent.isStopped = true;
+        _animator.Play("Rage");
         yield return null;
         yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f);
+        _agent.isStopped = false;
         if (_isAgr)
             _agent.SetDestination(_target.position);
     }
