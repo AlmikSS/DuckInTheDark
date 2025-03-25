@@ -8,6 +8,7 @@ public class TestBoss : MonoBehaviour, IDamageable
 {
     [SerializeField] private DamagerBase _rightDamager;
     [SerializeField] private DamagerBase _leftDamager;
+    [SerializeField] private Animator _animator;
     [SerializeField] private float _attackDistance;
     [SerializeField, Range(0, 1f)] private float _rangeChanse;
     [SerializeField] private float _rangeTimeMin;
@@ -18,7 +19,6 @@ public class TestBoss : MonoBehaviour, IDamageable
      
     private NavMeshAgent _agent;
     private AIVision _vision;
-    private Animator _animator;
     private Transform _target;
     private Coroutine _rangeCheckCoroutine;
     private bool _isAgr;
@@ -29,7 +29,6 @@ public class TestBoss : MonoBehaviour, IDamageable
     {
         _agent = GetComponent<NavMeshAgent>();
         _vision = GetComponent<AIVision>();
-        _animator = GetComponent<Animator>();
         _currentHealth = _maxHealth;
     }
 

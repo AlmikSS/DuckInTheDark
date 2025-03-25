@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="" />
+    <list default="true" id="a6b2b421-cd49-471d-b89a-573f64e3e339" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chromotheria/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Mobs/TestBoss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/AI/Mobs/TestBoss.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/RaccoonCannon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/CombatSystem/Weapons/RaccoonCannon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Movement/PlayerCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Movement/PlayerCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Movement/RigidbodyPlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Chromotheria/_Scripts/Player/Movement/RigidbodyPlayerMovement.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,6 +130,7 @@
       <workItem from="1742637488908" duration="11998000" />
       <workItem from="1742786441780" duration="5333000" />
       <workItem from="1742792499431" duration="7570000" />
+      <workItem from="1742934372280" duration="5497000" />
     </task>
     <servers />
   </component>

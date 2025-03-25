@@ -7,6 +7,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
 {
     [Header("Movement")]
     [SerializeField] private Transform _orientation;
+    [SerializeField] private Transform _playerModel;
     [SerializeField] private Transform _headCheckOrigin;
     [SerializeField] private LayerMask _obstacleLayerMask;
     [SerializeField] private float _checkObstacleDistance = 0.5f;
@@ -110,6 +111,12 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
         {
             Stop();
             return;
+        }
+
+        if (rawDirection.magnitude > 0.1f)
+        {
+            if (_playerModel != null)
+                _playerModel.rotation = _orientation.rotation;
         }
 
         // Двигаем игрока в направлении с определенной скоростью

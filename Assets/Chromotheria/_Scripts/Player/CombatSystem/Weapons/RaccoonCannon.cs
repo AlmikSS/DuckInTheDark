@@ -9,7 +9,8 @@ public class RaccoonCannon : WeaponBase
     protected override IEnumerator AttackRoutine(bool isRightMouseBtn, Animator animator)
     {
         var projectile = Instantiate(_projectilePrefab, _projectileSpawnPoint.position, Quaternion.identity).GetComponent<Projectile>();
-        projectile.Launch(_projectileSpawnPoint.forward, _damage);
+        var direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        projectile.Launch(direction, _damage);
         yield return null;
         Reload();
     }
