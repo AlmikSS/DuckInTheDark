@@ -23,6 +23,9 @@ public class TestMob : MonoBehaviour, IDamageable, IPushable
     private int _health;
 
     private enum State { Patrolling, Chasing }
+    
+    public int CurrentHealth => _health;
+    public int MaxHealth => _maxHealth;
 
     private void Start()
     {

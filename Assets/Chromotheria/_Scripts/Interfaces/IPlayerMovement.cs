@@ -3,6 +3,7 @@
 public interface IPlayerMovement
 {
     MovementState MovementState { get; }
+    Vector3 MovementDirection { get; }
     void Move(Vector2 inputDirection);
     void Jump();
     void Dash();

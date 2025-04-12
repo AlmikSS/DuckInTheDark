@@ -15,6 +15,10 @@ public class PlayerCamera : MonoBehaviour, IPlayerCamera
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        var settings = FindFirstObjectByType<SettingsManager>();
+        if (settings != null)
+            _sensitivity = settings.Sensitivity;
     }
 
     public void Look(Vector2 delta)

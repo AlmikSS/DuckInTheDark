@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace VH.AI.BehaviourTree
+﻿namespace VH.AI.BehaviourTree
 {
     public class BTSequenceNode : BTCompositeNode
     {

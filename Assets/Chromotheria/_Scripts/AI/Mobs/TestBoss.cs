@@ -13,6 +13,7 @@ public class TestBoss : MonoBehaviour, IDamageable
     [SerializeField, Range(0, 1f)] private float _rangeChanse;
     [SerializeField] private float _rangeTimeMin;
     [SerializeField] private float _rangeTimeMax;
+    [SerializeField] private float _attackRange;
     [SerializeField] private int _damageMin;
     [SerializeField] private int _damageMax;
     [SerializeField] private int _maxHealth;
@@ -25,6 +26,9 @@ public class TestBoss : MonoBehaviour, IDamageable
     private bool _isAttacking;
     private int _currentHealth;
 
+    public int CurrentHealth => _currentHealth;
+    public int MaxHealth => _maxHealth;
+    
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -71,8 +75,9 @@ public class TestBoss : MonoBehaviour, IDamageable
         yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f);
         _rightDamager.StopApplyDamage();
         _leftDamager.StopApplyDamage();
-        _isAttacking = false;
         _agent.isStopped = false;
+        yield return new WaitForSeconds(_attackRange);
+        _isAttacking = false;
     }
 
     private IEnumerator RangeRoutine()

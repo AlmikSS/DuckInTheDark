@@ -45,6 +45,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
     [SerializeField] private bool _drawCheckObstacleGizmos;
     [SerializeField] private Color _checkObstacleGizmoColor = Color.red;
 
+    private Animator _animator;
     private Rigidbody _rb;
     private IPlayerParkour _playerParkour;
     private MovementState _currentState;
@@ -59,11 +60,13 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
     private float _moveSpeed;
     
     public MovementState MovementState => _currentState;
+    public Vector3 MovementDirection => _movementDirection;
 
     [Inject]
-    private void Construct(IPlayerParkour playerParkour)
+    private void Construct(IPlayerParkour playerParkour, Animator animator)
     {
         _playerParkour = playerParkour;
+        _animator = animator;
     }
 
     private void Start()
@@ -160,6 +163,7 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
         {
             // Если мы не на земле или не готовы прыгать, останавливаемся
             if (!_grounded || !_readyToJump) yield break;
+            _animator.SetTrigger("Jump");
             _readyToJump = false;
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
             // Добавляем силу направленную вверх
@@ -223,7 +227,10 @@ public class RigidbodyPlayerMovement : MonoBehaviour, IPlayerMovement, IPushable
         if (!_grounded)
         {
             if (Physics.CheckSphere(_groundCheckOrigin.position, _groundCheckRadius, _groundLayerMask))
+            {
                 _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+                _animator.SetTrigger("Grounded");
+            }
         }
 
         _grounded = Physics.CheckSphere(_groundCheckOrigin.position, _groundCheckRadius, _groundLayerMask);

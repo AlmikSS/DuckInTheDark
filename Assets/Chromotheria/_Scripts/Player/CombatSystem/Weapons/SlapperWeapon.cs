@@ -7,12 +7,12 @@ public class SlapperWeapon : WeaponBase
     
     protected override IEnumerator AttackRoutine(bool isRightMouseBtn, Animator animator)
     {
-        animator.SetBool(AnimatorConstants.AttackBoolAnimName, true);
+        animator.SetTrigger(AnimatorConstants.AttackBoolAnimName);
         animator.SetBool(AnimatorConstants.IsSpecBoolAnimName, isRightMouseBtn);
         yield return null;
         _damager.StartApplyDamage(_damage, false);
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f);
-        animator.SetBool(AnimatorConstants.AttackBoolAnimName, false);
+        //animator.SetBool(AnimatorConstants.AttackBoolAnimName, false);
         State = WeaponState.Idle;
         _currentCombo++;
         _lastAttackTime = Time.time;
@@ -21,12 +21,12 @@ public class SlapperWeapon : WeaponBase
 
     protected override IEnumerator ComboRoutine(bool isRightMouseBtn, Animator animator)
     {
-        animator.SetBool(AnimatorConstants.ComboBoolAnimName, true);
+        animator.SetTrigger(AnimatorConstants.AttackBoolAnimName);
         animator.SetBool(AnimatorConstants.IsSpecBoolAnimName, isRightMouseBtn);
         yield return null;
         _damager.StartApplyDamage(_damage, true);
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f);
-        animator.SetBool(AnimatorConstants.ComboBoolAnimName, false);
+        //animator.SetBool(AnimatorConstants.ComboBoolAnimName, false);
         _damager.StopApplyDamage();
         Reload(); 
     }

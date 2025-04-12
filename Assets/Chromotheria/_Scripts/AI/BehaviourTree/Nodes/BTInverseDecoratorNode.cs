@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VH.AI.BehaviourTree
+﻿namespace VH.AI.BehaviourTree
 {
     public class BTInverseDecoratorNode : BTDecoratorNode
     {

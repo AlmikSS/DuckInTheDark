@@ -7,6 +7,7 @@ public class LoseWinUI : MonoBehaviour
 {
     [SerializeField] private GameObject _winPanel;
     [SerializeField] private GameObject _losePanel;
+    [SerializeField] private GameObject _gamePlaySound;
     
     private EventBus _eventBus;
     
@@ -22,6 +23,12 @@ public class LoseWinUI : MonoBehaviour
         _eventBus.Register<LoseEvent>(OnLose);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ToMenu();
+    }
+    
     private void OnWin(WinEvent e)
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -35,6 +42,7 @@ public class LoseWinUI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         Time.timeScale = 0f;
+        _gamePlaySound.SetActive(false);
         _losePanel.SetActive(true);
     }
 
@@ -44,6 +52,17 @@ public class LoseWinUI : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
+    public void ToMenu()
+    {
+        var settins = FindFirstObjectByType<SettingsManager>();
+        if (settins != null)
+            Destroy(settins.gameObject);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 
     private void OnDestroy()

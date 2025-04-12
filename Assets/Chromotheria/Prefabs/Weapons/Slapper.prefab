@@ -80,11 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441e5f740ce54d38b9fdeae0395a0213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 5
+  _reloadTime: 0
   _cancelReloadWaitTime: 0.3
   _comboWaitDelay: 0.2
-  _comboCount: 3
-  _damage: 10
+  _comboCount: 0
+  _damage: 70
   _damager: {fileID: 8406969699981662295}
 --- !u!114 &2273924543275486583
 MonoBehaviour:
